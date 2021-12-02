@@ -10,4 +10,4 @@ type UppercaseFst<T> = T extends `${infer L}${infer R}` ? `${Uppercase<L>}${R}` 
 type CamelCaseIterator<T, Ret extends string=''> = T extends [infer L, ...infer R] ? 
         ( L extends string ? CamelCaseIterator<R, `${Ret}${UppercaseFst<L>}`> : never ): Ret
 
-type CamelCase<T> = CamelCaseIterator<SplitString<T, '-'>>
+export type CamelCase<T> = CamelCaseIterator<SplitString<T, '-'>>
