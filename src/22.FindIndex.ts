@@ -9,6 +9,6 @@ type D = FindIndex<A, '2'>
 type Equal<T, K> = [T] extends [K] ? [K] extends [T] ? 
             (keyof T extends keyof K ? keyof K extends keyof T ? true: false : false): false: false
 
-type FindIndex<T, K> = T extends [...infer left, infer last] ? 
+export type FindIndex<T, K> = T extends [...infer left, infer last] ? 
         Equal<K, last> extends true ? 
             left["length"]: FindIndex<left, K> : never
