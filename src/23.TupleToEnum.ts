@@ -11,4 +11,4 @@ type a1 = TupleToEnum<["MacOS", "Windows", "Linux"]>
 type a2 = TupleToEnum<["MacOS", "Windows", "Linux"], true>
 // -> { readonly MacOS: 0, readonly Windows: 1, readonly Linux: 2 }
 
-type TupleToEnum<T extends string[], K = false> = { readonly [K in T[number]]: K extends true ? FindIndex<T, K> : K}
+type TupleToEnum<T extends string[], K = false> = { readonly [k in T[number]]: K extends true ? FindIndex<T, k> : k }
