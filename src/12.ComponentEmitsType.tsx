@@ -28,7 +28,9 @@ type ComponentEmitsType<T> = {
 
 // type A = ComponentEmitsType<source>
 
-function createComponent<Emits extends Record<string, any>>(emits: Emits): ComponentEmitsType<Emits> { return [{ emits }] as any }
+// function createComponent<Emits extends Record<string, any>>(emits: Emits): ComponentEmitsType<Emits> { return [{ emits }] as any }
+
+function createComponent<Schema>(schema: Schema): { (props: ComponentEmitsType<Schema>): any } { return [schema] as any }
 
 // // 最后返回的 Component变量类型为一个合法的React组件类型，并且能够通过`on事件驼峰命名`的方式，监听定义的事件，并且能够自动推导出事件的参数类型
 const Component = createComponent({
@@ -36,6 +38,7 @@ const Component = createComponent({
     'preview-item': (data: { item: any, index: number }) => true,
     'close-item': (data: { item: any, index: number }) => true,
 })
+
 // console.log(
 //     <Component
 //         // onHandleOpen 的类型为 (flag: boolean) => void
